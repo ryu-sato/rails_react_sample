@@ -1,0 +1,39 @@
+version: '3'
+services:
+  rails:
+    build:
+      context: .
+      args:
+        # Update 'VARIANT' to pick a Ruby version: 2, 2.7, 2.6, 2.5
+        - VARIANT=2.7
+        # Update 'NODE_VERSION' to set a node.js
+        - NODE_VERSION=14.*
+    command: sleep infinity
+    ports:
+      - 3000:3000
+    volumes:
+      - ..:/workspaces/
+      - rails_npms:/workspaces//node_modules
+      - rails_gems:/usr/local/bundle
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: ${DB_USERNAME:-}
+      DATABASE_PASSWORD: ${DB_PASSWORD:-password}
+  db:
+    image: mariadb:10.6.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${_DATABASE_DBNAME:-_%}
+      MYSQL_USER: ${DB_USERNAME:-}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command:
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_general_ci"
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  rails_npms:
+  rails_gems:
+  db_data:

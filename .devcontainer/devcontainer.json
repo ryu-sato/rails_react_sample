@@ -1,0 +1,31 @@
+// 下のファイルをベースにして下記の変更を加えた
+// - docker-compsoe を使う設定にした
+// - extensions をコメントアウトした (.vscode/extensions.json にて管理するため)
+// ref. https://github.com/microsoft/vscode-dev-containers/tree/772ae22f59b818b2e023e6e45475937a38cc4853/containers/ruby-rails
+{
+    "name": "Ruby on Rails (Community)",
+    // 変更したのは以下の箇所
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "rails",
+    "workspaceFolder": "/workspaces/",
+
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+  
+    // Add the IDs of extensions you want installed when the container is created.
+    // "extensions": [
+    //   "rebornix.Ruby"
+    // ],
+  
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+  
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "ruby --version",
+  
+    // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "vscode"
+  }
+  
