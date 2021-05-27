@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+if Parent.count.zero?
+  10.times do |n|
+    Parent.create(name: "example_#{n}")
+    Child.create(name: "example_#{n}")
+  end
+end
