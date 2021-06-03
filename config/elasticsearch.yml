@@ -1,0 +1,24 @@
+# elasticsearch-ruby configuration
+# Format: https://github.com/elastic/elasticsearch-ruby/blob/bdf5e145e5acc21726dddcd34492debbbddde568/elasticsearch-transport/lib/elasticsearch/transport/transport/connections/connection.rb#L25
+development:
+  host: http://elasticsearch:9200
+  # user: user
+  # password: password
+  transport_options:
+    request:
+      timeout: 90
+test:
+  host: http://es:9200
+  transport_options:
+    request:
+      timeout: 90
+staging:
+  # host: http://127.0.0.1:9200
+  # transport_options:
+  #   request:
+  #     timeout: 90
+production:
+  # host: http://127.0.0.1:9200
+  # transport_options:
+  #   request:
+  #     timeout: 90

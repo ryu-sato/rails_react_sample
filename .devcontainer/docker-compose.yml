@@ -20,6 +20,9 @@ services:
       DATABASE_PORT: 3306
       DATABASE_USERNAME: ${DB_USERNAME:-}
       DATABASE_PASSWORD: ${DB_PASSWORD:-password}
+    extra_hosts:
+      # Elasticsearch service を設定しない場合の dummy 設定
+      - elasticsearch:127.0.0.1
   db:
     image: mariadb:10.6.0
     restart: always
@@ -33,6 +36,20 @@ services:
       - "--collation-server=utf8mb4_general_ci"
     volumes:
       - db_data:/var/lib/mysql
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.0
+  #   environment:
+  #     discovery.type: "single-node"
+  #     cluster.name: "elasticsearch-rails"
+  #     cluster.routing.allocation.disk.threshold_enabled: "false"
+  #   ports:
+  #     - 9200:9200
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana-oss:7.6.0
+  #   environment:
+  #     ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+  #   ports:
+  #     - 5601:5601
 volumes:
   rails_npms:
   rails_gems:

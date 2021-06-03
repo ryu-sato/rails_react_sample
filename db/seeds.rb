@@ -8,7 +8,7 @@
 
 if Parent.count.zero?
   10.times do |n|
-    Parent.create(name: "example_#{n}")
+    Parent.create(name: "example_#{n}", age: 30+n, email: "mail_#{n}@example.com")
     Child.create(name: "example_#{n}")
   end
 end

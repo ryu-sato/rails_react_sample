@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2021_05_23_163439) do
 
   create_table "parents", force: :cascade do |t|
     t.string "name"
+    t.integer "age"
+    t.string "email"
     t.integer "lock_version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
