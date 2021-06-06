@@ -6,3 +6,25 @@
 
 <div id="parent" data-react-data="<%= @parents_json %>">
 </div>
+
+<%= form_tag search_path, method: :get do %>
+  標準全文検索
+  <%= search_field_tag :q, params[:q],
+    disabled: !ElasticsearchService.es_active?,
+    placeholder: (
+      ElasticsearchService.es_active? ?
+        t('.search.searchable',   default: 'Search') :
+        t('.search.unsearchable', default: 'Full text search is not available.')
+    )
+  %>
+
+  <%# 正規表現全文検索 %>
+  <%#= search_field_tag :regex_q, params[:regex_q],
+    disabled: !ElasticsearchService.es_active?,
+    placeholder: (
+      ElasticsearchService.es_active? ?
+        t('.search.searchable',   default: 'Search') :
+        t('.search.unsearchable', default: 'Full text search is not available.')
+    )
+  %>
+<% end %>

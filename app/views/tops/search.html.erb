@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="col-lg-12">
+    <h1><%= t('.search_result', default: 'Search result') %></h1>
+    <% if params[:q] || params[:regex_q] %>
+      <% if @hit_records.size > 0 %>
+        <% @hit_records.each_with_index do |record, n| %>
+          <% next if record.blank? %>
+          <div>
+            <%= record %>
+            <div>
+              <% if @highlights[n].present? %>
+                <table>
+                  <tbody>
+                    <% @highlights[n].each do |attr_name, attr_value| %>
+                      <tr>
+                        <th><%= attr_name %></th>
+                        <td><%= raw attr_value.first %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p><strong><%= params[:q] || params[:regex_q] %></strong> <%= raw t('.not_found', default: '- did not match any documents.') %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

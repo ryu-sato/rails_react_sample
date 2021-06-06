@@ -1,12 +1,12 @@
 # Elasticsearch による検索を有効にする
 # 使い方
 # Model < ActiveRecord::base
-#   include Searchable
+#   include FullTextSearchable
 #   
 #   # optional
 #   # search_indeing_attributes
 # end
-module Searchable
+module FullTextSearchable
   extend ActiveSupport::Concern
   
   included do

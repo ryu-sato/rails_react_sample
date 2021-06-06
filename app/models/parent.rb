@@ -1,4 +1,4 @@
 class Parent < ApplicationRecord
-  include Searchable
-  attr_indexer :name, :age
+  include FullTextSearchable
+  attr_indexer :name, :email
 end

@@ -55,6 +55,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jsonapi-serializer'
-gem "elasticsearch-rails", "~> 7.1"
 
+gem "elasticsearch-rails", "~> 7.1"
 gem "elasticsearch-model", "~> 7.1"
+gem "typhoeus", "~> 1.4"

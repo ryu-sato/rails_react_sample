@@ -1,6 +1,9 @@
+# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  resources :parents, only: %i[index]
   root 'tops#index'
+
+  resources :parents, only: %i[index]
   resources :tops
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  get 'search', to: 'tops#search'
 end
