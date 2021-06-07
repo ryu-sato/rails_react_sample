@@ -21,10 +21,10 @@ function Parent(props) {
   const tabs = children.map((c, index) => 
     <li
       key={`child-tab-${c.id}`}
-      className={ index === 0 ? "nav-item active" : "nav-item" }
+      className="nav-item"
       role="presentation">
       <button
-        className="nav-link"
+        className={ index === 0 ? "nav-link active" : "nav-link" }
         id={`child-tab-${c.id}`}
         data-bs-toggle="tab"
         data-bs-target={`#child-${c.id}`}
