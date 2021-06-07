@@ -32,7 +32,5 @@ class TopsController < ApplicationController
       # }
       result.highlight.transform_keys{ |k| k.sub(/\.\w/, '') }
     end
-
-    p @highlights
   end
 end
