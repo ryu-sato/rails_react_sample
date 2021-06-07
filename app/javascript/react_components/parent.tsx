@@ -1,8 +1,13 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
 
-function Parent(props: ParentProps) {
+import axios from 'axios';
+
+interface ParentProps {
+  id: number;
+  name: string;
+}
+
+const Parent = (props: ParentProps): JSX.Element => {
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
@@ -13,14 +18,14 @@ function Parent(props: ParentProps) {
         setChildren(newChildren);
       })
       .catch(() => {
-        console.log("Some error occured.");
+        console.log('Some error occured.');
       });
-  }, []); // 初回レンダ時にだけ実行される
+  }, [props.id]);
 
   const tabs = children.map((c, index) => (
     <li key={`child-tab-${c.id}`} className="nav-item" role="presentation">
       <button
-        className={index === 0 ? "nav-link active" : "nav-link"}
+        className={index === 0 ? 'nav-link active' : 'nav-link'}
         id={`child-tab-${c.id}`}
         data-bs-toggle="tab"
         data-bs-target={`#child-${c.id}`}
@@ -34,7 +39,7 @@ function Parent(props: ParentProps) {
   const childContents = children.map((c, index) => (
     <div
       key={`child-content-${c.id}`}
-      className={index === 0 ? "tab-pane fade show active" : "tab-pane fade"}
+      className={index === 0 ? 'tab-pane fade show active' : 'tab-pane fade'}
       id={`child-${c.id}`}
       role="tabpanel"
       aria-labelledby={`child-tab-${c.id}`}
@@ -51,16 +56,6 @@ function Parent(props: ParentProps) {
       <div className="tab-content">{childContents}</div>
     </>
   );
-}
-
-Parent.defaultProps = {
-  id: 0,
-  name: "UNKNOWN",
 };
-
-interface ParentProps {
-  id: number;
-  name: string;
-}
 
 export default Parent;
