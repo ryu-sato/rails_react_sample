@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_05_23_163439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "lock_version"
-    t.integer "parent_id"
+    t.integer "parent_id", null: false
     t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 

@@ -6,7 +6,7 @@ class CreateChildren < ActiveRecord::Migration[6.1]
       t.timestamps
       t.integer :lock_version
       
-      t.belongs_to :parent
+      t.belongs_to :parent, null: false
     end
   end
 end
