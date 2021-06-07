@@ -2,18 +2,17 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Parent from '../react_components/parent'
+import Parent from "../react_components/parent";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   const e = document.querySelector("#parent");
   const parents_data = JSON.parse(e.dataset.reactData).data;
-  const parents = parents_data.map((p) => <Parent {...p.attributes} key={p.id} />);
+  const parents = parents_data.map((p) => (
+    <Parent {...p.attributes} key={p.id} />
+  ));
 
-  ReactDOM.render(
-    <div>{parents}</div>,
-    e,
-  )
-})
+  ReactDOM.render(<div>{parents}</div>, e);
+});
