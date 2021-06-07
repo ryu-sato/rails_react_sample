@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 
 import axios from 'axios'
 
-function Parent(props) {
+function Parent(props: ParentProps) {
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
@@ -64,9 +63,9 @@ Parent.defaultProps = {
   name: "UNKNOWN"
 }
 
-Parent.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string
+interface ParentProps {
+  id: number;
+  name: string;
 }
 
 export default Parent;
