@@ -4,24 +4,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
 
-const Parent = props => (
-  <div>Hello {props.name}</div>
-)
-
-Parent.defaultProps = {
-  name: "UNKNOWN"
-}
-
-Parent.propTypes = {
-  name: PropTypes.string
-}
+import Parent from '../react_components/parent'
 
 document.addEventListener('DOMContentLoaded', () => {
   const e = document.querySelector("#parent");
   const parents_data = JSON.parse(e.dataset.reactData).data;
-  const parents = parents_data.map((p) => <Parent name={p.attributes.name} key={p.id} />);
+  const parents = parents_data.map((p) => <Parent {...p.attributes} key={p.id} />);
+
   ReactDOM.render(
     <div>{parents}</div>,
     e,

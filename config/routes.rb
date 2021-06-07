@@ -6,4 +6,12 @@ Rails.application.routes.draw do
   resources :tops
   
   get 'search', to: 'tops#search'
+  
+  namespace :api do
+    namespace :v1 do
+      resources :parents, only: %i[show] do
+        resources :children, only: %i[index]
+      end
+    end
+  end
 end
