@@ -3,17 +3,20 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+import Rails from '@rails/ujs';
+import Turbolinks from 'turbolinks';
+import * as ActiveStorage from '@rails/activestorage';
+import 'channels';
 
 // bootstrap
-import 'bootstrap'
+import 'bootstrap';
+
+// fontawesome
+import '@fortawesome/fontawesome-free/js/all';
 
 // styles
-import '../styles/rails_react_sample'
+import '../styles/rails_react_sample.scss';
+
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
