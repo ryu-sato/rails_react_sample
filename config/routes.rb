@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   
   get 'search', to: 'tops#search'
   
-  namespace :api do
-    namespace :v1 do
-      resources :parents, only: %i[show] do
-        resources :children, only: %i[index create]
+  defaults format: :json do
+    namespace :api do
+      namespace :v1 do
+        resources :parents, only: %i[show] do
+          resources :children, only: %i[index create]
+        end
+        get 'search', to: 'search#full_text'
       end
     end
   end

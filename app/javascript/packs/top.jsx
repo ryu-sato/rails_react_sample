@@ -6,13 +6,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Parent from '../react_components/parent';
+import Search from '../react_components/search';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const e = document.querySelector('#parent');
-  const parentsData = JSON.parse(e.dataset.reactData).data;
+  const ep = document.querySelector('#parent');
+  const parentsData = JSON.parse(ep.dataset.reactData).data;
   const parents = parentsData.map(p => (
     <Parent {...p.attributes} key={p.id} />
   ));
+  ReactDOM.render(<div>{parents}</div>, ep);
 
-  ReactDOM.render(<div>{parents}</div>, e);
+  const es = document.querySelector('#full-text-search');
+  const searchData = es.dataset;
+  const search = <Search {...searchData} />;
+  ReactDOM.render(<div>{search}</div>, es);
 });

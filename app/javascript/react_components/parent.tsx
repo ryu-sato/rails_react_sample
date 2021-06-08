@@ -70,14 +70,18 @@ const Parent = (props: ParentProps): JSX.Element => {
   const childContents = children.map(c => (
     <div
       key={`child-${c.id}`}
-      className={selectedChildId === c.id ? 'my-3 tab-pane fade show active' : 'my-3 tab-pane fade'}
+      className={
+        selectedChildId === c.id
+          ? 'my-3 tab-pane fade show active'
+          : 'my-3 tab-pane fade'
+      }
       id={`child-${c.id}`}
     >
       <div className="mb-3 row">
-        <label htmlFor="childName" className="col-sm-2 col-form-label">Name</label>
-        <div className="col-sm-10">
-          {c.attributes.name}
-        </div>
+        <label htmlFor="childName" className="col-sm-2 col-form-label">
+          Name
+        </label>
+        <div className="col-sm-10">{c.attributes.name}</div>
       </div>
     </div>
   ));
@@ -90,14 +94,27 @@ const Parent = (props: ParentProps): JSX.Element => {
       aria-labelledby="child-tab-new"
     >
       <div className="mb-3 row">
-        <label htmlFor="childName" className="col-sm-2 col-form-label">Name</label>
+        <label htmlFor="childName" className="col-sm-2 col-form-label">
+          Name
+        </label>
         <div className="col-sm-10">
-          <input id="childName" type="text" className="form-control" onChange={e => setNewChild({ ...newChild, name: e.target.value })}></input>
+          <input
+            id="childName"
+            type="text"
+            className="form-control"
+            onChange={e => setNewChild({ ...newChild, name: e.target.value })}
+          />
         </div>
       </div>
       <div className="row">
         <div className="col-sm-12 justify-content-end">
-          <button type="button" className="btn btn-primary mb-3 btn-sm" onClick={() => addChild()}>Add</button>
+          <button
+            type="button"
+            className="btn btn-primary mb-3 btn-sm"
+            onClick={() => addChild()}
+          >
+            Add
+          </button>
         </div>
       </div>
     </div>
