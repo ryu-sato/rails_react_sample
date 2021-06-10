@@ -33,6 +33,7 @@ const Search = (props: SearchProps): JSX.Element => {
         <input
           type="text"
           className="form-control"
+          acceptCharset="utf-8"
           placeholder={props.disabled ? '検索不可' : '全文検索'}
           onChange={e => setSearchingText(e.target.value)}
         />
@@ -53,7 +54,9 @@ const Search = (props: SearchProps): JSX.Element => {
       >
         Search
       </button>
-      <div>{searchResult.hits.map(h => JSON.stringify(h))}</div>
+      <div>
+        { searchResult.hits.map(h => JSON.stringify(h)) }
+      </div>
     </>
   );
 };

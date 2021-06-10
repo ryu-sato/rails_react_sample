@@ -9,6 +9,7 @@
 module FullTextSearchable
   extend ActiveSupport::Concern
   
+  # Elasticsearch の設定
   ES_SETTINGS = {
     analysis: {
       analyzer: {
@@ -23,7 +24,7 @@ module FullTextSearchable
       }
     }
   }
-
+  # Analyzer の設定
   ANALYZER_SETTINGS = {
     raw: {
       type: :text,
@@ -38,6 +39,8 @@ module FullTextSearchable
       analyzer: :kuromoji
     }
   }
+  # document に保存しない attributes (未指定だと全 attributes が保存される)
+  DEFAULT_UNDOCUMENTED_ATTRS = %i[lock_version created_at updated_at]
 
   included do
     include Elasticsearch::Model
@@ -74,6 +77,10 @@ module FullTextSearchable
       rescue Elasticsearch::Transport::Transport::Errors::NotFound
         # ドキュメントが存在しない(すでに削除済みの)時には例外を出力しないようにする
       end
+    end
+
+    def as_indexed_json(options = {})
+      as_json(except: DEFAULT_UNDOCUMENTED_ATTRS)
     end
     
     private_class_method

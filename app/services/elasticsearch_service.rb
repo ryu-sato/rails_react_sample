@@ -56,6 +56,7 @@ class ElasticsearchService
         }
       }
     }.update(option || default_search_option).to_json
+    Rails.logger.debug(query)
     models = full_text_searchable_models
 
     Elasticsearch::Model.search(
@@ -76,6 +77,7 @@ class ElasticsearchService
         }
       }
     }.update(option || default_search_option).to_json
+    Rails.logger.debug(query)
     models = full_text_searchable_models
 
     Elasticsearch::Model.search(

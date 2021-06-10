@@ -1,7 +1,5 @@
 json.hits do
-  json.array! @hit_records do |record|
-    json.merge! record.attributes
-  end
+  json.merge! @hit_records
 end
 json.highlights do
   json.array! @highlights do |highlight|
