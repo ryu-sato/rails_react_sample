@@ -10,10 +10,8 @@ import 'channels';
 
 // bootstrap
 import 'bootstrap';
-
 // fontawesome
 import '@fortawesome/fontawesome-free/js/all';
-
 // styles
 import '../styles/rails_react_sample.scss';
 
