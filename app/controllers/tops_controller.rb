@@ -1,6 +1,9 @@
 class TopsController < ApplicationController
-  # GET /tops or /tops.json
   def index
+  end
+  
+  # GET /tops or /tops.json
+  def parent
     @parents_json = ParentSerializer.new(Parent.all).serializable_hash.to_json
   end
 

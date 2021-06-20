@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root 'tops#index'
 
   resources :parents, only: %i[index]
-  resources :tops
   
   get 'search', to: 'tops#search'
   

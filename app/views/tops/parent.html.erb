@@ -1,0 +1,9 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  
+  <h2>Search</h2>
+  <div id="full-text-search" disabled="<%= !ElasticsearchService.es_active? %>"></div>
+
+  <h2>Parents</h2>
+  <div id="parent" data-react-data="<%= @parents_json %>"></div>
+</div>

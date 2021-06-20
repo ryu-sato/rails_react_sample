@@ -7,17 +7,29 @@ import ReactDOM from 'react-dom';
 
 import Parent from '../react_components/parent';
 import Search from '../react_components/search';
+import '../locales/i18n';
+import I18nSample from '../react_components/I18nSample';
 
 document.addEventListener('DOMContentLoaded', () => {
   const ep = document.querySelector('#parent');
-  const parentsData = JSON.parse(ep.dataset.reactData).data;
-  const parents = parentsData.map(p => (
-    <Parent {...p.attributes} key={p.id} />
-  ));
-  ReactDOM.render(<div>{parents}</div>, ep);
+  if (ep) {
+    const parentsData = JSON.parse(ep.dataset.reactData).data;
+    const parents = parentsData.map(p => (
+      <Parent {...p.attributes} key={p.id} />
+    ));
+    ReactDOM.render(<div>{parents}</div>, ep);
+  }
 
   const es = document.querySelector('#full-text-search');
-  const searchData = es.dataset;
-  const search = <Search {...searchData} />;
-  ReactDOM.render(<div>{search}</div>, es);
+  if (es) {
+    const searchData = es.dataset;
+    const search = <Search {...searchData} />;
+    ReactDOM.render(<div>{search}</div>, es);
+  }
+  
+  const i18nDom = document.querySelector('#i18n');
+  if (i18nDom) {
+    const i18nSample = <I18nSample />;
+    ReactDOM.render(i18nSample, i18nDom);
+  }
 });
