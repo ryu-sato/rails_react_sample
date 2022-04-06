@@ -4,7 +4,7 @@
 #   include FullTextSearchable
 #   
 #   # optional
-#   # search_indeing_attributes
+#   # indexed_attrs
 # end
 module FullTextSearchable
   extend ActiveSupport::Concern
